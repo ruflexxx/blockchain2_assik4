@@ -20,9 +20,9 @@ const STATE_ENUM = ["Pending", "Active", "Canceled", "Defeated", "Succeeded", "Q
 let provider, signer, governorContract, tokenContract;
 let userAddress;
 
-// Update these addresses after running deployment
-const GOVERNOR_ADDRESS = "0x4826533B4897376654Bb4d4AD88B7faFD0C98528"; 
-const TOKEN_ADDRESS = "0x998abeb3E57409262aE5b751f60747921B33613E";    
+// ВАЖНО: Эти адреса соответствуют вашему contract-addresses.json
+const GOVERNOR_ADDRESS = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"; 
+const TOKEN_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";    
 
 function logStatus(msg, isError = false) {
     console.log(msg);
@@ -117,7 +117,8 @@ async function loadProposals() {
 
     try {
         const filter = governorContract.filters.ProposalCreated();
-        const events = await governorContract.queryFilter(filter, -5000);
+        // Ищем с блока 0, чтобы увидеть предложения после перемотки времени
+        const events = await governorContract.queryFilter(filter, 0);
 
         if (events.length === 0) {
             list.innerHTML = "No proposals found.";
