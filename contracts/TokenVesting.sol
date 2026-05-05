@@ -24,6 +24,7 @@ contract TokenVesting is Ownable {
     ) Ownable(msg.sender) {
         require(_token != address(0), "Token address cannot be 0");
         require(_beneficiary != address(0), "Beneficiary address cannot be 0");
+        require(_duration > 0, "Duration must be greater than 0");
         token = IERC20(_token);
         beneficiary = _beneficiary;
         start = _start;
@@ -31,7 +32,7 @@ contract TokenVesting is Ownable {
     }
 
     function release() public {
-        uint256 unreleased = _releasableAmount();
+        uint256 unreleased = releasableAmount();
         require(unreleased > 0, "No tokens are due for release");
 
         released += unreleased;
@@ -40,11 +41,11 @@ contract TokenVesting is Ownable {
         emit TokensReleased(beneficiary, unreleased);
     }
 
-    function _releasableAmount() internal view returns (uint256) {
-        return _vestedAmount() - released;
+    function releasableAmount() public view returns (uint256) {
+        return vestedAmount() - released;
     }
 
-    function _vestedAmount() internal view returns (uint256) {
+    function vestedAmount() public view returns (uint256) {
         uint256 totalBalance = token.balanceOf(address(this)) + released;
 
         if (block.timestamp < start) {
@@ -55,5 +56,4 @@ contract TokenVesting is Ownable {
             return (totalBalance * (block.timestamp - start)) / duration;
         }
     }
-
 }

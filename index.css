@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
 
 :root {
-    --primary: #6366f1;
-    --primary-hover: #4f46e5;
-    --secondary: #ec4899;
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --secondary: #f97316;
     --bg-dark: #0f172a;
     --bg-card: rgba(30, 41, 59, 0.7);
     --text-main: #f8fafc;
@@ -11,6 +11,7 @@
     --success: #22c55e;
     --danger: #ef4444;
     --warning: #f59e0b;
+    --surface-border: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -23,8 +24,8 @@
 body {
     background-color: var(--bg-dark);
     background-image: 
-        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.15) 0px, transparent 50%);
+        radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.18) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(249, 115, 22, 0.16) 0px, transparent 50%);
     color: var(--text-main);
     min-height: 100vh;
     padding: 2rem;
@@ -39,15 +40,54 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 2rem;
     margin-bottom: 3rem;
+}
+
+.hero-copy {
+    max-width: 640px;
+}
+
+.eyebrow {
+    display: inline-block;
+    margin-bottom: 0.9rem;
+    color: #c4b5fd;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
 }
 
 h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    background: linear-gradient(to right, #6366f1, #ec4899);
+    background: linear-gradient(to right, #818cf8, #fb923c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.subhead {
+    margin-top: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.status-chip {
+    display: inline-flex;
+    margin-top: 1rem;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid var(--surface-border);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-success {
+    color: var(--success);
+}
+
+.status-error {
+    color: #fca5a5;
 }
 
 .btn {
@@ -63,7 +103,7 @@ h1 {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--primary), #8b5cf6);
+    background: linear-gradient(135deg, var(--primary), #7c3aed);
     color: white;
     box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
 }
@@ -75,7 +115,7 @@ h1 {
 
 .btn-secondary {
     background: var(--bg-card);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--surface-border);
     color: var(--text-main);
 }
 
@@ -94,7 +134,7 @@ h1 {
 .stat-card {
     background: var(--bg-card);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--surface-border);
     padding: 1.5rem;
     border-radius: 20px;
     text-align: center;
@@ -113,7 +153,28 @@ h1 {
     font-weight: 700;
 }
 
-/* Section Styling */
+.small-stat {
+    font-size: 1rem !important;
+    color: #cbd5e1;
+}
+
+.helper-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    padding: 1rem 1.25rem;
+    background: rgba(15, 23, 42, 0.45);
+    border: 1px solid var(--surface-border);
+    border-radius: 20px;
+}
+
+.helper-strip p {
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
 .section-title {
     margin-bottom: 1.5rem;
     display: flex;
@@ -130,7 +191,7 @@ h1 {
 .proposal-card {
     background: var(--bg-card);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--surface-border);
     border-radius: 24px;
     padding: 2rem;
     transition: transform 0.3s ease;
@@ -142,8 +203,20 @@ h1 {
 
 .proposal-header {
     display: flex;
+    gap: 1rem;
     justify-content: space-between;
+    align-items: flex-start;
     margin-bottom: 1rem;
+}
+
+.proposal-meta {
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.mono {
+    font-family: Consolas, Monaco, monospace;
+    font-size: 0.85rem;
 }
 
 .badge {
@@ -156,7 +229,9 @@ h1 {
 .badge-active { background: rgba(34, 197, 94, 0.2); color: var(--success); }
 .badge-pending { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
 .badge-defeated { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
-.badge-executed { background: rgba(99, 102, 241, 0.2); color: var(--primary); }
+.badge-executed { background: rgba(79, 70, 229, 0.2); color: #a5b4fc; }
+.badge-success { background: rgba(14, 165, 233, 0.18); color: #7dd3fc; }
+.badge-neutral { background: rgba(148, 163, 184, 0.2); color: #cbd5e1; }
 
 .vote-actions {
     display: grid;
@@ -179,6 +254,7 @@ h1 {
 .vote-btn:hover { background: rgba(255, 255, 255, 0.1); }
 .vote-btn.for:hover { background: rgba(34, 197, 94, 0.2); border-color: var(--success); }
 .vote-btn.against:hover { background: rgba(239, 68, 68, 0.2); border-color: var(--danger); }
+.vote-btn.abstain:hover { background: rgba(245, 158, 11, 0.2); border-color: var(--warning); }
 
 /* Animation */
 @keyframes fadeIn {
@@ -190,16 +266,26 @@ h1 {
     animation: fadeIn 0.6s ease-out forwards;
 }
 
-/* Modal/Forms */
 .form-group {
     margin-bottom: 1.5rem;
+}
+
+.field-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-muted);
+}
+
+.delegation-actions {
+    display: flex;
+    gap: 1rem;
 }
 
 .input-field {
     width: 100%;
     padding: 0.75rem 1rem;
     background: rgba(15, 23, 42, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--surface-border);
     border-radius: 12px;
     color: white;
     outline: none;
@@ -207,4 +293,40 @@ h1 {
 
 .input-field:focus {
     border-color: var(--primary);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-muted);
+    border: 1px dashed rgba(148, 163, 184, 0.25);
+    border-radius: 20px;
+    background: rgba(15, 23, 42, 0.35);
+}
+
+code {
+    font-family: Consolas, Monaco, monospace;
+    color: #ddd6fe;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    header,
+    .helper-strip,
+    .delegation-actions,
+    .proposal-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .vote-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .btn {
+        justify-content: center;
+    }
 }

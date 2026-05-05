@@ -4,3 +4,5 @@ cache/
 hardhat-cache/
 .env
 contract-addresses.json
+.appdata/
+.localappdata/

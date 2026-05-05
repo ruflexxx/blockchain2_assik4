@@ -10,10 +10,11 @@
 <body>
     <div class="container">
         <header class="animate-in">
-            <div>
+            <div class="hero-copy">
+                <span class="eyebrow">DAO Operations Dashboard</span>
                 <h1>Quantum DAO</h1>
-                <p style="color: var(--text-muted)">Governing the future of decentralization</p>
-                <div id="statusMsg" style="font-size: 0.8rem; margin-top: 0.5rem; font-weight: 600;"></div>
+                <p class="subhead">Governance token, delegation, and proposal monitoring in one place.</p>
+                <div id="statusMsg" class="status-chip"></div>
             </div>
             <button id="connectBtn" class="btn btn-primary">
                 Connect Wallet
@@ -21,7 +22,6 @@
         </header>
 
         <main>
-            <!-- Dashboard Stats -->
             <section class="stats-grid animate-in" style="animation-delay: 0.1s">
                 <div class="stat-card">
                     <h3>Your Balance</h3>
@@ -33,31 +33,41 @@
                 </div>
                 <div class="stat-card">
                     <h3>Delegated To</h3>
-                    <p id="delegatedTo" style="font-size: 1rem; color: var(--primary)">None</p>
+                    <p id="delegatedTo" class="small-stat">Not delegated</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Wallet</h3>
+                    <p id="walletValue" class="small-stat">Not connected</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Network</h3>
+                    <p id="networkValue" class="small-stat">Not connected</p>
                 </div>
             </section>
 
-            <!-- Delegation Section -->
+            <section class="helper-strip animate-in" style="animation-delay: 0.15s">
+                <p>Run <code>npm run deploy</code> or <code>npm run deploy:localhost</code> before using the dashboard so contract addresses get injected automatically.</p>
+                <button id="refreshBtn" class="btn btn-secondary">Refresh Proposals</button>
+            </section>
+
             <section class="animate-in" style="animation-delay: 0.2s; margin-bottom: 3rem;">
                 <div class="proposal-card">
                     <h2 class="section-title">Manage Delegation</h2>
                     <div class="form-group">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted)">Delegate Address</label>
-                        <div style="display: flex; gap: 1rem;">
+                        <label class="field-label">Delegate Address</label>
+                        <div class="delegation-actions">
                             <input type="text" id="delegateAddr" class="input-field" placeholder="0x...">
                             <button id="delegateBtn" class="btn btn-primary">Delegate</button>
+                            <button id="delegateSelfBtn" class="btn btn-secondary">Delegate to Self</button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Active Proposals -->
             <section class="animate-in" style="animation-delay: 0.3s">
-                <h2 class="section-title">Active Proposals</h2>
+                <h2 class="section-title">Recent Proposals</h2>
                 <div id="proposalsList" class="proposals-list">
-                    <div style="text-align: center; padding: 3rem; color: var(--text-muted)">
-                        Connecting to blockchain...
-                    </div>
+                    <div class="empty-state">Connecting to blockchain...</div>
                 </div>
             </section>
         </main>

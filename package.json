@@ -1,17 +1,34 @@
 {
   "name": "blockchain2_assik4",
   "version": "1.0.0",
+  "private": true,
+  "description": "DAO governance system with governance token, timelock, treasury, vesting, tests, and a lightweight frontend.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "hardhat clean",
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "node": "hardhat node",
+    "deploy": "hardhat run scripts/deploy.js",
+    "deploy:localhost": "hardhat run scripts/deploy.js --network localhost",
+    "send:tokens": "hardhat run scripts/send-tokens.js",
+    "send:tokens:localhost": "hardhat run scripts/send-tokens.js --network localhost"
   },
-  "keywords": [],
+  "keywords": [
+    "blockchain",
+    "dao",
+    "hardhat",
+    "governance",
+    "solidity"
+  ],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "engines": {
+    "node": ">=18"
+  },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "@openzeppelin/contracts": "^5.6.1",
-    "hardhat": "^2.22.0"
+    "hardhat": "^2.28.0"
   }
 }
