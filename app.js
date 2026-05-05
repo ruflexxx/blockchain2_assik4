@@ -21,8 +21,8 @@ let provider, signer, governorContract, tokenContract;
 let userAddress;
 
 // ВАЖНО: Эти адреса соответствуют вашему contract-addresses.json
-const GOVERNOR_ADDRESS = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"; 
-const TOKEN_ADDRESS = "0x5FbDB2315678afecb367f032d93F642f64180aa3";    
+const GOVERNOR_ADDRESS = "0x9E545E3C0baAB3E08CdfD552C960A1050f373042"; 
+const TOKEN_ADDRESS = "0xc3e53F4d16Ae77Db1c982e75a937B9f60FE63690";    
 
 function logStatus(msg, isError = false) {
     console.log(msg);
