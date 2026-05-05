@@ -1,0 +1,6 @@
+node_modules/
+artifacts/
+cache/
+hardhat-cache/
+.env
+contract-addresses.json
