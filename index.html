@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAO Governance | Quantum Control</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js" type="application/javascript"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="animate-in">
+            <div>
+                <h1>Quantum DAO</h1>
+                <p style="color: var(--text-muted)">Governing the future of decentralization</p>
+                <div id="statusMsg" style="font-size: 0.8rem; margin-top: 0.5rem; font-weight: 600;"></div>
+            </div>
+            <button id="connectBtn" class="btn btn-primary">
+                Connect Wallet
+            </button>
+        </header>
+
+        <main>
+            <!-- Dashboard Stats -->
+            <section class="stats-grid animate-in" style="animation-delay: 0.1s">
+                <div class="stat-card">
+                    <h3>Your Balance</h3>
+                    <p id="tokenBalance">0.00 GTK</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Voting Power</h3>
+                    <p id="votingPower">0.00 VP</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Delegated To</h3>
+                    <p id="delegatedTo" style="font-size: 1rem; color: var(--primary)">None</p>
+                </div>
+            </section>
+
+            <!-- Delegation Section -->
+            <section class="animate-in" style="animation-delay: 0.2s; margin-bottom: 3rem;">
+                <div class="proposal-card">
+                    <h2 class="section-title">Manage Delegation</h2>
+                    <div class="form-group">
+                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted)">Delegate Address</label>
+                        <div style="display: flex; gap: 1rem;">
+                            <input type="text" id="delegateAddr" class="input-field" placeholder="0x...">
+                            <button id="delegateBtn" class="btn btn-primary">Delegate</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Active Proposals -->
+            <section class="animate-in" style="animation-delay: 0.3s">
+                <h2 class="section-title">Active Proposals</h2>
+                <div id="proposalsList" class="proposals-list">
+                    <div style="text-align: center; padding: 3rem; color: var(--text-muted)">
+                        Connecting to blockchain...
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
