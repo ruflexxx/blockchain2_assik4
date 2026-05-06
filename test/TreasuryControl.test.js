@@ -1,6 +1,8 @@
-const { expect } = require("chai");
-const { ethers } = require("hardhat");
-const { loadFixture, time, mine } = require("@nomicfoundation/hardhat-network-helpers");
+import { expect } from "chai";
+import { network } from "hardhat";
+
+const { ethers, networkHelpers } = await network.getOrCreate();
+const { loadFixture, mine, time } = networkHelpers;
 
 describe("DAO Treasury & Box Control", function () {
   async function deployFixture() {

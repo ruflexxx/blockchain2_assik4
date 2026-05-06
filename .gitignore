@@ -6,3 +6,4 @@ hardhat-cache/
 contract-addresses.json
 .appdata/
 .localappdata/
+slither-artifacts/

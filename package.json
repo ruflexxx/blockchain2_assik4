@@ -2,6 +2,7 @@
   "name": "blockchain2_assik4",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "DAO governance system with governance token, timelock, treasury, vesting, tests, and a lightweight frontend.",
   "main": "index.js",
   "scripts": {
@@ -27,8 +28,14 @@
     "node": ">=18"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@nomicfoundation/hardhat-ethers": "^4.0.10",
+    "@nomicfoundation/hardhat-ethers-chai-matchers": "^3.0.7",
+    "@nomicfoundation/hardhat-mocha": "^3.0.18",
+    "@nomicfoundation/hardhat-network-helpers": "^3.0.7",
     "@openzeppelin/contracts": "^5.6.1",
-    "hardhat": "^2.28.0"
+    "chai": "^6.2.2",
+    "ethers": "^6.14.0",
+    "hardhat": "^3.4.4",
+    "mocha": "^11.0.0"
   }
 }

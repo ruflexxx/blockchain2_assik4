@@ -1,6 +1,11 @@
-const { ethers, network } = require("hardhat");
-const fs = require("fs");
-const path = require("path");
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { network } from "hardhat";
+
+const { ethers, networkName } = await network.create();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const APP_JS_PATH = path.join(__dirname, "..", "app.js");
 const ADDRESSES_PATH = path.join(__dirname, "..", "contract-addresses.json");
@@ -95,7 +100,7 @@ async function main() {
   const vestingStart = getEnvNumber("VESTING_START", Number(latestBlock.timestamp) + 60);
 
   console.log("Deploying contracts with the account:", deployer.address);
-  console.log("Network:", network.name, "| Chain ID:", chain.chainId.toString());
+  console.log("Network:", networkName, "| Chain ID:", chain.chainId.toString());
 
   const treasury = await deployContract("Treasury");
   const box = await deployContract("Box");
@@ -171,7 +176,7 @@ async function main() {
   );
 
   const addresses = {
-    network: network.name,
+    network: networkName,
     chainId: Number(chain.chainId),
     deployedAt: new Date().toISOString(),
     TOKEN_ADDRESS: tokenAddress,
